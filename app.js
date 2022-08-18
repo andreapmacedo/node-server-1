@@ -1,30 +1,15 @@
 const express = require('express');
+// const checklistRouter = require('.src/routes/checklist');
+const checklistRouter = require('./src/routes/checklist');
 
 const app = express();
+app.use(express.json());
 
-const log = (req, res, next) => {
-  console.log('Logging...');
-  console.log(req.body);
-  console.log(`Data: ${Date.now()}`);
-  next();
-}
-
-app.use(log);
-
-app.get('/', (req, res) => {
-  res.send('<h1>Hello World!</h1>');
-})
-
-app.get('/json', (req, res) => {
-  res.json({title: 'Tarefa X', done: true});
-})
+// forma 1
+// app.use(checklistRouter);
+// forma 2
+app.use('/checklists',checklistRouter);
 
 app.listen(3001, () => {
   console.log('Servidor foi iniciado');
-})
-
-// npm install nodemon --save-dev
-// npx nodemon app.js
-
-// com script
-// npm dev
+});
