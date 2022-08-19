@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
   res.send('<h1>Hello World!</h1>');
 })
 
-
+// npm run dev
 app.listen(3001, () => {
   console.log('Servidor foi iniciado');
 })
